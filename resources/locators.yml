@@ -1,0 +1,206 @@
+# Locators para automação Android - Configurações
+# Organizado por fabricante e tipo de elemento
+
+# Configurações Gerais (Fallback)
+default:
+  app:
+    package: "com.android.settings"
+    activity: ".Settings"
+  
+  main_screen:
+    title:
+      text: "Configurações"
+      text_en: "Settings"
+      xpath: "//android.widget.TextView[@text='Configurações' or @text='Settings']"
+    
+    search:
+      id: "com.android.settings:id/search_action_bar"
+      xpath: "//android.widget.ImageView[@content-desc='Pesquisar' or @content-desc='Search']"
+      coordinates: [700, 150]
+
+  menu_items:
+    wifi:
+      text: "Wi-Fi"
+      text_variations: ["Wi-Fi", "WLAN", "Rede e Internet"]
+      xpath: "//android.widget.TextView[@text='Wi-Fi']"
+      id: "com.android.settings:id/wifi"
+    
+    bluetooth:
+      text: "Bluetooth"
+      xpath: "//android.widget.TextView[@text='Bluetooth']"
+      id: "com.android.settings:id/bluetooth"
+    
+    apps:
+      text: "Apps"
+      text_variations: ["Apps", "Aplicativos", "Gerenciador de aplicativos"]
+      xpath: "//android.widget.TextView[@text='Apps']"
+    
+    display:
+      text: "Exibição"
+      text_en: "Display"
+      text_variations: ["Exibição", "Display", "Tela"]
+      xpath: "//android.widget.TextView[@text='Exibição' or @text='Display']"
+    
+    battery:
+      text: "Bateria"
+      text_en: "Battery"
+      xpath: "//android.widget.TextView[@text='Bateria' or @text='Battery']"
+    
+    security:
+      text: "Segurança"
+      text_en: "Security"
+      text_variations: ["Segurança", "Security", "Privacidade e segurança"]
+      xpath: "//android.widget.TextView[contains(@text,'Segurança') or contains(@text,'Security')]"
+    
+    accounts:
+      text: "Contas"
+      text_en: "Accounts"
+      text_variations: ["Contas", "Accounts", "Usuários e contas"]
+      xpath: "//android.widget.TextView[contains(@text,'Contas') or contains(@text,'Accounts')]"
+    
+    system:
+      text: "Sistema"
+      text_en: "System"
+      text_variations: ["Sistema", "System", "Sobre o telefone"]
+      xpath: "//android.widget.TextView[contains(@text,'Sistema') or contains(@text,'System')]"
+
+  common_elements:
+    toggle_switch:
+      class: "android.widget.Switch"
+      xpath: "//android.widget.Switch"
+    
+    back_button:
+      keycode: 4
+      xpath: "//android.widget.ImageButton[@content-desc='Navegar para cima']"
+    
+    list_item:
+      class: "android.widget.LinearLayout"
+      xpath: "//android.widget.LinearLayout[@clickable='true']"
+
+# Configurações específicas Samsung
+samsung:
+  inherits: default
+  
+  menu_items:
+    wifi:
+      text: "Wi-Fi"
+      id: "com.android.settings:id/wifi_settings"
+    
+    bluetooth:
+      text: "Bluetooth"
+      id: "com.android.settings:id/bluetooth_settings"
+    
+    security:
+      text: "Biometria e segurança"
+      text_en: "Biometrics and security"
+      xpath: "//android.widget.TextView[contains(@text,'Biometria') or contains(@text,'Biometrics')]"
+    
+    accounts:
+      text: "Contas e backup"
+      text_en: "Accounts and backup"
+      xpath: "//android.widget.TextView[contains(@text,'Contas e backup')]"
+    
+    system:
+      text: "Atualização de software"
+      text_en: "Software update"
+      text_variations: ["Atualização de software", "Software update", "Sobre o telefone"]
+
+# Configurações específicas Xiaomi/MIUI
+xiaomi:
+  inherits: default
+  
+  menu_items:
+    wifi:
+      text: "Wi-Fi"
+      id: "com.android.settings:id/wifi"
+    
+    security:
+      text: "Senhas e segurança"
+      text_en: "Passwords & security"
+      xpath: "//android.widget.TextView[contains(@text,'Senhas') or contains(@text,'Passwords')]"
+    
+    accounts:
+      text: "Conta Mi"
+      text_en: "Mi Account"
+      xpath: "//android.widget.TextView[contains(@text,'Mi Account') or contains(@text,'Conta Mi')]"
+    
+    system:
+      text: "Sobre o telefone"
+      text_en: "About phone"
+      xpath: "//android.widget.TextView[contains(@text,'Sobre o telefone') or contains(@text,'About phone')]"
+
+# Configurações específicas Google/Pixel
+google:
+  inherits: default
+  
+  menu_items:
+    wifi:
+      text: "Rede e Internet"
+      text_en: "Network & internet"
+      xpath: "//android.widget.TextView[contains(@text,'Rede') or contains(@text,'Network')]"
+    
+    bluetooth:
+      text: "Dispositivos conectados"
+      text_en: "Connected devices"
+      xpath: "//android.widget.TextView[contains(@text,'conectados') or contains(@text,'Connected')]"
+    
+    security:
+      text: "Segurança"
+      text_en: "Security"
+      xpath: "//android.widget.TextView[@text='Segurança' or @text='Security']"
+
+# Configurações específicas Huawei
+huawei:
+  inherits: default
+  
+  menu_items:
+    display:
+      text: "Exibição e brilho"
+      text_en: "Display & brightness"
+      xpath: "//android.widget.TextView[contains(@text,'brilho') or contains(@text,'brightness')]"
+    
+    accounts:
+      text: "Usuários e contas"
+      text_en: "Users & accounts"
+      xpath: "//android.widget.TextView[contains(@text,'Usuários') or contains(@text,'Users')]"
+    
+    system:
+      text: "Sistema e atualizações"
+      text_en: "System & updates"
+      xpath: "//android.widget.TextView[contains(@text,'atualizações') or contains(@text,'updates')]"
+
+# Configurações de coordenadas por resolução
+coordinates:
+  hd_720p:  # 720x1280
+    search_icon: [360, 100]
+    center_tap: [360, 640]
+    scroll_start: [360, 1000]
+    scroll_end: [360, 300]
+  
+  fhd_1080p:  # 1080x1920
+    search_icon: [540, 150]
+    center_tap: [540, 960]
+    scroll_start: [540, 1500]
+    scroll_end: [540, 400]
+  
+  qhd_1440p:  # 1440x2560
+    search_icon: [720, 200]
+    center_tap: [720, 1280]
+    scroll_start: [720, 2000]
+    scroll_end: [720, 500]
+
+# Configurações de timeouts
+timeouts:
+  short: 5
+  medium: 10
+  long: 30
+  app_launch: 10
+  element_load: 15
+  page_transition: 5
+
+# Configurações de ações
+actions:
+  swipe_duration: 1000
+  tap_duration: 100
+  long_press_duration: 2000
+  double_tap_interval: 300

@@ -1,0 +1,149 @@
+# Robot Framework - Automação Android
+# =================================
+
+# Robot Framework outputs
+output.xml
+log.html
+report.html
+selenium-screenshot-*.png
+*.pyc
+__pycache__/
+
+# Logs e relatórios de execução
+logs/
+results/
+*.log
+
+# Screenshots capturados durante testes
+screenshots/
+*.png
+*.jpg
+*.jpeg
+
+# Arquivos temporários do Android
+ui_dump*.xml
+screenshot_*.png
+device_info*.txt
+
+# Python
+# ======
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+# ==================
+.venv/
+venv/
+ENV/
+env/
+.env
+
+# IDEs e Editores
+# ==============
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS específicos
+# =============
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# Arquivos temporários
+# ===================
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# Node.js (se usar Appium via npm)
+# ===============================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Android específicos
+# ==================
+# APKs de teste
+*.apk
+
+# Arquivos de configuração local
+local.properties
+device_config_local.yml
+
+# Credenciais e configurações sensíveis
+# ====================================
+*.key
+*.pem
+config_secret.yml
+.env.local
+.env.production
+
+# Backup e versionamento
+# =====================
+*.backup
+*.old
+*_backup.*
+*_old.*
+
+# Arquivos grandes de mídia
+# ========================
+*.mp4
+*.avi
+*.mov
+*.gif
+
+# Coverage reports
+# ===============
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+
+# Pytest
+# ======
+.pytest_cache/
+
+# Jupyter Notebook
+# ===============
+.ipynb_checkpoints
+
+# Documentação gerada
+# ==================
+docs/_build/
