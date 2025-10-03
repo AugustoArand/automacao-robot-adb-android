@@ -1,7 +1,7 @@
 # Robot Framework - Automação Android
 # =================================
 
-# Robot Framework outputs
+# Robot Framework outputs (arquivos de execução)
 output.xml
 log.html
 report.html
@@ -9,21 +9,40 @@ selenium-screenshot-*.png
 *.pyc
 __pycache__/
 
-# Logs e relatórios de execução
-logs/
+# Logs e relatórios de execução (conteúdo da pasta, não a pasta)
+logs/*.xml
+logs/*.html
+logs/*.txt
+logs/device_report_*.txt
+logs/ui_dump.xml
 results/
 *.log
 
-# Screenshots capturados durante testes
-screenshots/
-*.png
-*.jpg
-*.jpeg
+# Screenshots capturados durante testes (conteúdo da pasta, não a pasta)
+screenshots/*.png
+screenshots/*.jpg
+screenshots/*.jpeg
+# Manter estrutura da pasta screenshots/
+!screenshots/.gitkeep
 
 # Arquivos temporários do Android
 ui_dump*.xml
 screenshot_*.png
 device_info*.txt
+temp_devices.txt
+connected_devices.txt
+
+# Manter arquivos de configuração importantes
+!resources/
+!tests/
+!*.resource
+!*.robot
+!*.yaml
+!*.yml
+!*.md
+!requirements.txt
+!run_tests.*
+!base.resource
 
 # Python
 # ======
