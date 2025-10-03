@@ -1,0 +1,9 @@
+app:
+    package: "com.android.settings"
+    activity: ".Settings"
+  
+main_screen:
+    title:
+    text: "Configurações"
+    text_en: "Settings"
+    xpath: "//android.widget.TextView[@text='Configurações' or @text='Settings']"

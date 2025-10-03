@@ -63,6 +63,125 @@ default:
       text_en: "System"
       text_variations: ["Sistema", "System", "Sobre o telefone"]
       xpath: "//android.widget.TextView[contains(@text,'Sistema') or contains(@text,'System')]"
+    
+    network_internet:
+      text: "Rede e Internet"
+      text_en: "Network & internet"
+      text_variations: ["Rede e Internet", "Network & internet", "Wi-Fi e redes móveis", "Conexões"]
+      xpath: "//android.widget.TextView[contains(@text,'Rede') or contains(@text,'Network')]"
+    
+    connected_devices:
+      text: "Dispositivos conectados"
+      text_en: "Connected devices"
+      text_variations: ["Dispositivos conectados", "Connected devices", "Bluetooth e dispositivos"]
+      xpath: "//android.widget.TextView[contains(@text,'conectados') or contains(@text,'Connected')]"
+    
+    sound_vibration:
+      text: "Som e vibração"
+      text_en: "Sound & vibration"
+      text_variations: ["Som e vibração", "Sound & vibration", "Som", "Audio"]
+      xpath: "//android.widget.TextView[contains(@text,'Som') or contains(@text,'Sound')]"
+    
+    accessibility:
+      text: "Acessibilidade"
+      text_en: "Accessibility"
+      text_variations: ["Acessibilidade", "Accessibility"]
+      xpath: "//android.widget.TextView[contains(@text,'Acessibilidade') or contains(@text,'Accessibility')]"
+
+  network_internet_submenu:
+    internet:
+      text: "Internet"
+      text_en: "Internet"
+      text_variations: ["Internet", "Wi-Fi", "Dados móveis"]
+      xpath: "//android.widget.TextView[@text='Internet' or @text='Wi-Fi']"
+    
+    airplane_mode:
+      text: "Modo avião"
+      text_en: "Airplane mode"
+      text_variations: ["Modo avião", "Airplane mode", "Modo de voo"]
+      xpath: "//android.widget.TextView[contains(@text,'avião') or contains(@text,'Airplane')]"
+    
+    airplane_toggle:
+      class: "android.widget.Switch"
+      xpath: "//android.widget.TextView[contains(@text,'avião') or contains(@text,'Airplane')]/following-sibling::*//android.widget.Switch"
+      xpath_alternative: "//android.widget.LinearLayout[.//android.widget.TextView[contains(@text,'avião') or contains(@text,'Airplane')]]//android.widget.Switch"
+
+  connected_devices_submenu:
+    pair_new_device:
+      text: "Parear novo dispositivo"
+      text_en: "Pair new device"
+      text_variations: ["Parear novo dispositivo", "Pair new device", "Adicionar dispositivo", "Add device"]
+      xpath: "//android.widget.TextView[contains(@text,'Parear') or contains(@text,'Pair') or contains(@text,'Adicionar')]"
+
+  battery_submenu:
+    battery_manager:
+      text: "Gerenciador de bateria"
+      text_en: "Battery manager"
+      text_variations: ["Gerenciador de bateria", "Battery manager", "Otimização de bateria", "Battery optimization"]
+      xpath: "//android.widget.TextView[contains(@text,'Gerenciador') or contains(@text,'manager') or contains(@text,'Otimização')]"
+
+  sound_submenu:
+    media_volume:
+      text: "Volume de mídia"
+      text_en: "Media volume"
+      text_variations: ["Volume de mídia", "Media volume", "Mídia", "Media"]
+      xpath: "//android.widget.TextView[contains(@text,'mídia') or contains(@text,'Media')]"
+    
+    media_volume_slider:
+      class: "android.widget.SeekBar"
+      xpath: "//android.widget.TextView[contains(@text,'mídia') or contains(@text,'Media')]/following-sibling::*//android.widget.SeekBar"
+      xpath_alternative: "//android.widget.LinearLayout[.//android.widget.TextView[contains(@text,'mídia') or contains(@text,'Media')]]//android.widget.SeekBar"
+
+  accessibility_submenu:
+    font_size:
+      text: "Tamanho da fonte"
+      text_en: "Font size"
+      text_variations: ["Tamanho da fonte", "Font size", "Texto"]
+      xpath: "//android.widget.TextView[contains(@text,'fonte') or contains(@text,'Font')]"
+    
+    display_size:
+      text: "Tamanho da tela"
+      text_en: "Display size"
+      text_variations: ["Tamanho da tela", "Display size", "Densidade"]
+      xpath: "//android.widget.TextView[contains(@text,'Tamanho da tela') or contains(@text,'Display size')]"
+      xpath: "//android.widget.TextView[contains(@text,'Gerenciador') or contains(@text,'manager') or contains(@text,'Otimização')]"
+
+  sound_submenu:
+    media_volume:
+      text: "Volume de mídia"
+      text_en: "Media volume"
+      text_variations: ["Volume de mídia", "Media volume", "Mídia", "Media"]
+      xpath: "//android.widget.TextView[contains(@text,'mídia') or contains(@text,'Media')]"
+    
+    media_volume_slider:
+      class: "android.widget.SeekBar"
+      xpath: "//android.widget.TextView[contains(@text,'mídia') or contains(@text,'Media')]/following-sibling::*//android.widget.SeekBar"
+      xpath_alternative: "//android.widget.LinearLayout[.//android.widget.TextView[contains(@text,'mídia') or contains(@text,'Media')]]//android.widget.SeekBar"
+
+  accessibility_submenu:
+    font_size:
+      text: "Tamanho da fonte"
+      text_en: "Font size"
+      text_variations: ["Tamanho da fonte", "Font size", "Texto"]
+      xpath: "//android.widget.TextView[contains(@text,'fonte') or contains(@text,'Font')]"
+    
+    display_size:
+      text: "Tamanho da tela"
+      text_en: "Display size"
+      text_variations: ["Tamanho da tela", "Display size", "Densidade"]
+      xpath: "//android.widget.TextView[contains(@text,'Tamanho da tela') or contains(@text,'Display size')]"
+    
+    network_internet:
+      text: "Rede e Internet"
+      text_en: "Network & internet"
+      text_variations: ["Rede e Internet", "Network & internet", "Wi-Fi e redes móveis", "Conexões"]
+      xpath: "//android.widget.TextView[contains(@text,'Rede') or contains(@text,'Network')]"
+    
+    connected_devices:
+      text: "Dispositivos conectados"
+      text_en: "Connected devices"
+      text_variations: ["Dispositivos conectados", "Connected devices", "Bluetooth e dispositivos"]
+      xpath: "//android.widget.TextView[contains(@text,'conectados') or contains(@text,'Connected')]"
 
   common_elements:
     toggle_switch:
@@ -104,6 +223,17 @@ samsung:
       text: "Atualização de software"
       text_en: "Software update"
       text_variations: ["Atualização de software", "Software update", "Sobre o telefone"]
+    
+    network_internet:
+      text: "Conexões"
+      text_en: "Connections"
+      text_variations: ["Conexões", "Connections", "Rede e Internet"]
+      xpath: "//android.widget.TextView[contains(@text,'Conexões') or contains(@text,'Connections')]"
+    
+    connected_devices:
+      text: "Dispositivos conectados"
+      text_en: "Connected devices"
+      xpath: "//android.widget.TextView[contains(@text,'conectados') or contains(@text,'Connected')]"
 
 # Configurações específicas Xiaomi/MIUI
 xiaomi:
@@ -140,6 +270,16 @@ google:
       xpath: "//android.widget.TextView[contains(@text,'Rede') or contains(@text,'Network')]"
     
     bluetooth:
+      text: "Dispositivos conectados"
+      text_en: "Connected devices"
+      xpath: "//android.widget.TextView[contains(@text,'conectados') or contains(@text,'Connected')]"
+    
+    network_internet:
+      text: "Rede e Internet"
+      text_en: "Network & internet"
+      xpath: "//android.widget.TextView[contains(@text,'Rede') or contains(@text,'Network')]"
+    
+    connected_devices:
       text: "Dispositivos conectados"
       text_en: "Connected devices"
       xpath: "//android.widget.TextView[contains(@text,'conectados') or contains(@text,'Connected')]"

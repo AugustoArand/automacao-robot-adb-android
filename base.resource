@@ -18,6 +18,21 @@ Library          ScreenCapLibrary
 Resource         resources/android_keywords.robot
 Resource         resources/yaml_locators.robot
 Resource         resources/device_config.robot
+Resource         resources/utils/screenshot.resource
+
+# Import Pages
+Resource        resources/page/selectConfigPage.resource
+
+# Import Locators
+Variables      resources/locators/config/redeInternetLocators.yaml
+Variables      resources/locators/config/dispositivosConecLocators.yaml
+Variables      resources/locators/config/bateriaLocators.yaml
+Variables      resources/locators/config/configImpressoraLocators.yaml
+Variables      resources/locators/config/sobreDispositivoLocators.yaml
+Variables      resources/locators/config/somVibracaoLocators.yaml
+Variables      resources/locators/config/configGeralLocators.yaml
+
+
 
 # === VARIÁVEIS GLOBAIS ===
 *** Variables ***
@@ -39,8 +54,7 @@ ${MEDIUM_TIMEOUT}            10s
 ${LONG_TIMEOUT}              30s
 ${APP_LAUNCH_TIMEOUT}        15s
 
-# Configurações de captura
-${SCREENSHOT_QUALITY}        100
+# Configurações de captura (movidas para screenshot.resource)
 ${UI_DUMP_TIMEOUT}           10s
 
 # === KEYWORDS GLOBAIS ===
@@ -148,29 +162,7 @@ Voltar Para Home
     Sleep    1s
     Log    Voltou para tela inicial
 
-Capturar Screenshot Global
-    [Documentation]    Captura screenshot com timestamp e contexto do teste
-    [Arguments]        ${nome_base}=screenshot    ${contexto}=${TEST_NAME}
-    
-    ${timestamp}=    Get Time    epoch
-    ${test_name_clean}=    Replace String    ${contexto}    ${SPACE}    _
-    ${filename}=    Set Variable    ${nome_base}_${test_name_clean}_${timestamp}.png
-    ${filepath}=    Set Variable    ${SCREENSHOTS_DIR}/${filename}
-    
-    # Capturar via ADB
-    ${device_path}=    Set Variable    /sdcard/temp_screenshot.png
-    Run Process    ${ADB_COMMAND}    shell    screencap    -p    ${device_path}
-    Run Process    ${ADB_COMMAND}    pull    ${device_path}    ${filepath}
-    Run Process    ${ADB_COMMAND}    shell    rm    ${device_path}
-    
-    Log    Screenshot capturado: ${filepath}
-    Return From Keyword    ${filepath}
-
-Capturar Screenshot Falha
-    [Documentation]    Captura screenshot quando teste falha
-    
-    ${screenshot}=    Capturar Screenshot Global    FALHA    ${TEST_NAME}
-    Log    Screenshot de falha capturado: ${screenshot}
+# Keywords de screenshot movidas para resources/utils/screenshot.resource
 
 Aguardar E Verificar Elemento
     [Documentation]    Aguarda elemento aparecer e verifica se existe

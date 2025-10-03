@@ -33,9 +33,11 @@ echo "1) Testes básicos ADB (Iniciante)"
 echo "2) Configurações ADB + YAML (Recomendado)"
 echo "3) Sistema YAML Locators (Avançado)"
 echo "4) Detecção de Dispositivos"
-echo "5) Todos os testes"
+echo "5) Rede e Dispositivos Conectados"
+echo "6) Automações Completas - Menu Configurações (NOVO!)"
+echo "7) Todos os testes"
 echo ""
-read -p "Digite sua opção (1-5): " opcao
+read -p "Digite sua opção (1-7): " opcao
 
 case $opcao in
     1)
@@ -55,6 +57,22 @@ case $opcao in
         robot tests/device_detection_tests.robot
         ;;
     5)
+        echo "🌐 Executando testes de Rede e Dispositivos..."
+        robot tests/rede_dispositivos_test.robot
+        ;;
+    6)
+        echo "🎯 Executando Automações Completas do Menu Configurações..."
+        echo "📋 Este teste inclui:"
+        echo "   • Rede e Internet → Internet"
+        echo "   • Rede e Internet → Modo Avião (habilitar/desabilitar)"
+        echo "   • Dispositivos Conectados → Parear novo dispositivo"
+        echo "   • Bateria → Gerenciador de bateria"
+        echo "   • Som e Vibração → Volume de mídia (0% e 50%)"
+        echo "   • Acessibilidade → Densidade de impressão"
+        echo ""
+        robot tests/automacoes_completas_test.robot
+        ;;
+    7)
         echo "📊 Executando todos os testes..."
         robot tests/
         ;;
