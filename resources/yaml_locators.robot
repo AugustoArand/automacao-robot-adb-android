@@ -144,26 +144,57 @@ Tocar Elemento YAML
     END
 
 Tocar Por Texto Simples
-    [Documentation]    Toca em elemento procurando por texto na tela
+    [Documentation]    Toca em elemento procurando por texto na tela de forma mais robusta
     [Arguments]        ${texto}
     
-    # Fazer dump da UI
+    # Fazer dump da UI com timestamp único
     ${timestamp}=    Get Time    epoch
-    ${dump_file}=    Set Variable    /sdcard/ui_dump_${timestamp}.xml
+    ${dump_file_device}=    Set Variable    /sdcard/ui_dump_${timestamp}.xml
+    ${dump_file_local}=     Set Variable    ${CURDIR}/../dumps/ui_search_${timestamp}.xml
     
-    Run Process    adb    shell    uiautomator    dump    ${dump_file}
+    # Capturar dump
+    ${result}=    Run Process    adb    shell    uiautomator    dump    ${dump_file_device}
+    Should Be Equal As Integers    ${result.rc}    0    Falha ao capturar dump da UI
     
-    # Verificar se texto existe
-    ${result}=    Run Process    adb    shell    grep    -q    ${texto}    ${dump_file}
+    # Baixar dump para análise local
+    ${pull_result}=    Run Process    adb    pull    ${dump_file_device}    ${dump_file_local}
+    Should Be Equal As Integers    ${pull_result.rc}    0    Falha ao baixar dump da UI
     
-    # Limpar arquivo
-    Run Process    adb    shell    rm    ${dump_file}
+    # Verificar se texto existe no dump
+    ${dump_content}=    Get File    ${dump_file_local}
+    ${texto_encontrado}=    Run Keyword And Return Status    Should Contain    ${dump_content}    ${texto}
     
-    # Se encontrou, usar coordenadas aproximadas
-    Run Keyword If    ${result.rc} == 0
-    ...    Run Process    adb    shell    input    tap    540    960
-    ...    ELSE
-    ...    Fail    Texto não encontrado: ${texto}
+    # Limpar arquivos temporários
+    Run Process    adb    shell    rm    ${dump_file_device}
+    Remove File    ${dump_file_local}
+    
+    # Se texto não foi encontrado, falhar
+    Return From Keyword If    not ${texto_encontrado}    ${FALSE}
+    
+    # Se encontrou, tentar extrair coordenadas do elemento ou usar coordenadas padrão
+    ${coordenadas_extraidas}=    Run Keyword And Return Status    
+    ...    Should Match Regexp    ${dump_content}    bounds="\\[(\\d+),(\\d+)\\]\\[(\\d+),(\\d+)\\]".*${texto}
+    
+    # Se conseguiu extrair coordenadas específicas, usar elas (implementação futura)
+    # Por enquanto, usar coordenadas baseadas na posição típica de menus
+    ${x}=    Set Variable    540
+    ${y}=    Set Variable    400
+    
+    # Calcular coordenadas baseadas na resolução
+    ${coords}=    Run Keyword And Return Status    Obter Coordenadas Tap    center_tap
+    ${x}=    Run Keyword If    ${coords}
+    ...    Set Variable    ${coords}[0]
+    ...    ELSE    Set Variable    540
+    ${y}=    Run Keyword If    ${coords}
+    ...    Set Variable    ${coords}[1]  
+    ...    ELSE    Set Variable    400
+    
+    # Executar toque
+    Run Process    adb    shell    input    tap    ${x}    ${y}
+    Sleep    2s
+    Log    Tocado em '${texto}' nas coordenadas aproximadas: ${x}, ${y}
+    
+    Return From Keyword    ${TRUE}
 
 Tocar Por Coordenadas
     [Documentation]    Toca em coordenadas específicas

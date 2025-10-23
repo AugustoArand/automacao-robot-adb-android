@@ -1,0 +1,226 @@
+# Locators para Rede e Internet - Dispositivo GPOS760
+# Extraído automaticamente via ADB em 20/10/2025
+
+rede_internet:
+  # Opção principal no menu de configurações
+  menu_principal:
+    text: "Rede e Internet"
+    resource_id: "android:id/title"
+    class: "android.widget.TextView"
+    bounds: "[96,159][237,188]"
+    summary: "Wi-Fi, rede móvel e uso de dados"
+    
+  # Título da tela de Rede e Internet
+  titulo_tela:
+    text: "Rede e Internet"
+    class: "android.widget.TextView"
+    bounds: "[95,51][277,88]"
+    
+  # Botão voltar
+  botao_voltar:
+    content_desc: "Voltar"
+    class: "android.widget.ImageButton"
+    bounds: "[0,32][75,107]"
+
+# Opções dentro de Rede e Internet
+wifi:
+  titulo:
+    text: "Wi-Fi"
+    resource_id: "android:id/title"
+    class: "android.widget.TextView"
+    bounds: "[96,128][143,157]"
+    clickable: true
+    
+  icone:
+    resource_id: "android:id/icon"
+    class: "android.widget.ImageView"
+    bounds: "[21,140][53,172]"
+    
+  switch:
+    resource_id: "com.android.settings:id/switchWidget"
+    class: "android.widget.Switch"
+    content_desc: "Wi-Fi"
+    bounds: "[373,107][480,205]"
+    checkable: true
+    
+  status_summary:
+    resource_id: "android:id/summary"
+    class: "android.widget.TextView"
+    bounds: "[96,157][185,184]"
+    # Exemplo: "Gertec_5G" (nome da rede conectada)
+    
+  container_principal:
+    class: "android.widget.LinearLayout"
+    bounds: "[0,107][480,205]"
+    clickable: true
+
+rede_movel:
+  titulo:
+    text: "Rede móvel"
+    resource_id: "android:id/title"
+    class: "android.widget.TextView"
+    bounds: "[96,226][204,255]"
+    enabled: false  # Geralmente desabilitado em emuladores
+    
+  icone:
+    resource_id: "android:id/icon"
+    class: "android.widget.ImageView"
+    bounds: "[21,224][53,256]"
+    enabled: false
+    
+  container:
+    class: "android.widget.LinearLayout"
+    bounds: "[0,205][480,276]"
+    enabled: false
+
+modo_aviao:
+  titulo:
+    text: "Modo avião"
+    resource_id: "android:id/title"
+    class: "android.widget.TextView"
+    bounds: "[96,297][204,326]"
+    
+  icone:
+    resource_id: "android:id/icon"
+    class: "android.widget.ImageView"
+    bounds: "[21,295][53,327]"
+    
+  switch:
+    resource_id: "android:id/switch_widget"
+    class: "android.widget.Switch"
+    bounds: "[395,293][459,329]"
+    checkable: true
+    checked: false  # Estado padrão
+    
+  container:
+    class: "android.widget.LinearLayout"
+    bounds: "[0,276][480,347]"
+    clickable: true
+
+economia_dados:
+  titulo:
+    text: "Economia de dados"
+    resource_id: "android:id/title"
+    class: "android.widget.TextView"
+    bounds: "[96,368][280,397]"
+    
+  icone:
+    resource_id: "android:id/icon"
+    class: "android.widget.ImageView"
+    bounds: "[21,380][53,412]"
+    
+  status_summary:
+    text: "Desativada"
+    resource_id: "android:id/summary"
+    class: "android.widget.TextView"
+    bounds: "[96,397][189,424]"
+    
+  container:
+    class: "android.widget.LinearLayout"
+    bounds: "[0,347][480,445]"
+    clickable: true
+
+vpn:
+  titulo:
+    text: "VPN"
+    resource_id: "android:id/title"
+    class: "android.widget.TextView"
+    bounds: "[96,466][137,495]"
+    
+  icone:
+    resource_id: "android:id/icon"
+    class: "android.widget.ImageView"
+    bounds: "[21,478][53,510]"
+    
+  status_summary:
+    text: "Nenhuma"
+    resource_id: "android:id/summary"
+    class: "android.widget.TextView"
+    bounds: "[96,495][178,522]"
+    
+  container:
+    class: "android.widget.LinearLayout"
+    bounds: "[0,445][480,543]"
+    clickable: true
+
+avancado:
+  titulo:
+    text: "Avançado"
+    resource_id: "android:id/title"
+    class: "android.widget.TextView"
+    bounds: "[96,564][180,591]"
+    
+  icone:
+    resource_id: "android:id/icon"
+    class: "android.widget.ImageView"
+    bounds: "[21,575][53,607]"
+    
+  summary:
+    text: "DNS particular"
+    resource_id: "android:id/summary"
+    class: "android.widget.TextView"
+    bounds: "[96,591][218,618]"
+    
+  container:
+    class: "android.widget.LinearLayout"
+    bounds: "[0,543][480,639]"
+    clickable: true
+
+# Opções dentro de Avançado
+dns_particular:
+  titulo:
+    text: "DNS particular"
+    resource_id: "android:id/title"
+    class: "android.widget.TextView"
+    bounds: "[96,564][231,593]"
+    
+  status_summary:
+    text: "Desativado"
+    resource_id: "android:id/summary"
+    class: "android.widget.TextView"
+    bounds: "[96,591][185,618]"  # Posição aproximada baseada no padrão
+    
+  container:
+    class: "android.widget.LinearLayout"
+    bounds: "[0,543][480,641]"
+    clickable: true
+
+# Coordenadas para toques rápidos (centro dos elementos)
+coordenadas_toque:
+  wifi: "[240,156]"           # Centro do item Wi-Fi
+  modo_aviao: "[240,311]"     # Centro do item Modo Avião  
+  economia_dados: "[240,396]" # Centro do item Economia de Dados
+  vpn: "[240,494]"           # Centro do item VPN
+  avancado: "[240,591]"      # Centro do item Avançado
+  dns_particular: "[240,592]" # Centro do item DNS Particular
+  
+# Switches importantes
+switches:
+  wifi:
+    resource_id: "com.android.settings:id/switchWidget"
+    bounds: "[373,107][480,205]"
+    centro_toque: "[426,156]"
+    
+  modo_aviao:
+    resource_id: "android:id/switch_widget"  
+    bounds: "[395,293][459,329]"
+    centro_toque: "[427,311]"
+
+# Informações do dispositivo
+dispositivo_info:
+  modelo: "GPOS760"
+  resolucao: "480x736"
+  densidade: "mdpi"
+  android_version: "Detectado via ADB"
+  data_extracao: "2025-10-20"
+  
+# Comandos ADB utilizados para navegação
+comandos_adb:
+  abrir_configuracoes: "adb shell am start -n com.android.settings/.Settings"
+  clicar_rede_internet: "adb shell input tap 240 187"
+  clicar_wifi: "adb shell input tap 240 156"
+  clicar_modo_aviao: "adb shell input tap 240 311"
+  clicar_economia_dados: "adb shell input tap 240 396"
+  clicar_vpn: "adb shell input tap 240 494"
+  clicar_avancado: "adb shell input tap 240 591"
+  voltar: "adb shell input keyevent KEYCODE_BACK"

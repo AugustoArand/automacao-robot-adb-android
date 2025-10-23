@@ -32,6 +32,24 @@ device_info*.txt
 temp_devices.txt
 connected_devices.txt
 
+# Dumps de UI gerados durante testes (conteúdo da pasta dumps/)
+dumps/*.xml
+dumps/*_dump*.xml
+dumps/configuracoes_*.xml
+dumps/dispositivos_*.xml
+dumps/rede_*.xml
+dumps/wifi_*.xml
+dumps/detalhes_*.xml
+dumps/parear_*.xml
+dumps/preferencias_*.xml
+dumps/antes_*.xml
+dumps/tentativa*.xml
+dumps/verificacao_*.xml
+dumps/validacao_*.xml
+dumps/visibilidade_*.xml
+# Manter estrutura da pasta dumps/
+!dumps/.gitkeep
+
 # Manter arquivos de configuração importantes
 !resources/
 !tests/

@@ -1,0 +1,3 @@
+# Manter esta pasta no repositório
+# Esta pasta contém os dumps XML de UI gerados durante os testes
+# Os arquivos .xml são ignorados pelo .gitignore mas a estrutura da pasta é preservada

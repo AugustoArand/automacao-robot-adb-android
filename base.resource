@@ -14,10 +14,13 @@ Library          yaml
 Library          AppiumLibrary    WITH NAME    Appium
 Library          ScreenCapLibrary
 
-# === IMPORTS DE RECURSOS ===
-Resource         resources/android_keywords.robot
+# === IMPORTS DE RESOURCES ===
 Resource         resources/yaml_locators.robot
-Resource         resources/device_config.robot
+Resource         utils/screenshot_utils.robot
+Resource         resources/locators/gpos760/dispConectadosLocators.resource
+Resource         resources/locators/gpos760/redeEInternetLocators.resource
+Resource         page/redeEInternet.resource
+Resource         page/dispConectados.resource
 
 # === VARIÁVEIS GLOBAIS ===
 *** Variables ***
@@ -27,6 +30,7 @@ ${RESOURCES_DIR}             ${PROJECT_ROOT}/resources
 ${TESTS_DIR}                 ${PROJECT_ROOT}/tests
 ${SCREENSHOTS_DIR}           ${PROJECT_ROOT}/screenshots
 ${LOGS_DIR}                  ${PROJECT_ROOT}/logs
+${DUMPS_DIR}                 ${PROJECT_ROOT}/dumps
 
 # Configurações ADB e Android
 ${ADB_COMMAND}               adb
@@ -45,12 +49,15 @@ ${UI_DUMP_TIMEOUT}           10s
 
 # === KEYWORDS GLOBAIS ===
 *** Keywords ***
+
+# Realocação de keywords para a pasta Utils
 Setup Ambiente Base
     [Documentation]    Configuração inicial comum para todos os testes
     
     # Criar diretórios necessários
     Create Directory    ${SCREENSHOTS_DIR}
     Create Directory    ${LOGS_DIR}
+    Create Directory    ${DUMPS_DIR}
     
     # Verificar se ADB está disponível
     Verificar ADB Disponivel
@@ -294,3 +301,49 @@ Validar Pré Requisitos
     
     Log    ✅ Todos os pré-requisitos validados com sucesso
     Log Separador
+
+Capturar E Baixar Dump UI
+    [Documentation]    Captura dump da UI e baixa para pasta específica
+    [Arguments]        ${nome_arquivo}
+    
+    # Gerar timestamp para arquivo único
+    ${timestamp}=    Get Time    epoch
+    ${nome_com_timestamp}=    Set Variable    ${nome_arquivo}_${timestamp}.xml
+    
+    # Paths completos
+    ${device_path}=    Set Variable    /sdcard/${nome_com_timestamp}
+    ${local_path}=     Set Variable    ${DUMPS_DIR}/${nome_com_timestamp}
+    
+    # Capturar dump no dispositivo
+    Run Process    adb    shell    uiautomator    dump    ${device_path}
+    
+    # Baixar arquivo para pasta local
+    ${result}=    Run Process    adb    pull    ${device_path}    ${local_path}
+    Should Be Equal As Integers    ${result.rc}    0    Falha ao baixar dump: ${nome_arquivo}
+    
+    # Limpar arquivo do dispositivo
+    Run Process    adb    shell    rm    ${device_path}
+    
+    # Verificar se arquivo foi criado localmente
+    File Should Exist    ${local_path}
+    Log    Dump salvo em: ${local_path}
+    
+    RETURN    ${local_path}
+
+Limpar Dumps Antigos
+    [Documentation]    Remove arquivos dump mais antigos que X dias
+    [Arguments]        ${dias}=7
+    
+    ${dump_files}=    List Files In Directory    ${DUMPS_DIR}    *.xml
+    ${data_limite}=    Subtract Time From Date    ${EMPTY}    ${dias} days
+    
+    FOR    ${arquivo}    IN    @{dump_files}
+        ${caminho_completo}=    Set Variable    ${DUMPS_DIR}/${arquivo}
+        ${data_arquivo}=    Get Modified Time    ${caminho_completo}
+        ${e_antigo}=    Evaluate    '${data_arquivo}' < '${data_limite}'
+        
+        Run Keyword If    ${e_antigo}    Remove File    ${caminho_completo}
+        Run Keyword If    ${e_antigo}    Log    Dump removido: ${arquivo}
+    END
+    
+    Log    Limpeza de dumps concluída - arquivos mais antigos que ${dias} dias removidos

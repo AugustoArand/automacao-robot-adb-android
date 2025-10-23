@@ -31,6 +31,7 @@ sudo apt install android-sdk
 ### 2. Ativar ambiente virtual Python
 ```bash
 source .venv/bin/activate
+.\.venv\Scripts\Activate.ps1
 ```
 
 ### 3. Verificar se ADB está funcionando
@@ -127,6 +128,68 @@ automacao-adb/
 - **Mais rápido**: Comandos diretos via ADB
 - **Mais estável**: Menos pontos de falha
 - **Cross-platform**: Funciona em qualquer dispositivo Android
+
+## 🚀 Execução dos Testes
+
+### Script Interativo (Recomendado)
+
+**Linux/macOS:**
+```bash
+./run_tests.sh
+```
+
+**Windows PowerShell:**
+```powershell
+.\run_tests.ps1
+```
+
+### Execução Manual
+
+```bash
+# Rede e Internet (Cenários 2-5, 14-15, 17-18)
+robot tests/redeEInternet.robot
+
+# Detalhes da Rede Conectada  
+robot tests/detalhesRede.robot
+
+# Dispositivos Conectados (Cenários 20-23)
+robot tests/dispositivosConectados.robot
+
+# Todos os testes
+robot tests/
+
+# Por tags específicas
+robot --include dispositivos_conectados tests/
+robot --include rede_internet tests/
+```
+
+## 📋 Cenários Implementados
+
+### 🌐 Rede e Internet
+- **2-5**: Acessar tela de Rede e Internet
+- **14-15**: Configurações Wi-Fi
+- **17-18**: Detalhes da rede conectada
+
+### 📱 Dispositivos Conectados  
+- **20**: Acessar dispositivos conectados
+- **21**: Parear novo dispositivo Bluetooth
+- **22-23**: Preferências de conexão
+
+### 🔍 Funcionalidades Extras
+- Detalhes completos da rede Wi-Fi
+- Gerenciamento de estado Wi-Fi/Bluetooth
+- Captura automática de evidências
+
+## 📁 Estrutura de Arquivos Gerados
+
+```
+├── screenshots/           # Evidências visuais dos testes
+├── dumps/                # Dumps XML da interface (para debug)
+├── logs/                 # Logs detalhados de execução
+├── log.html             # Relatório principal (abrir no navegador)
+├── report.html          # Resumo executivo
+└── output.xml           # Dados estruturados para CI/CD
+```
 
 ## Comandos Úteis ADB
 

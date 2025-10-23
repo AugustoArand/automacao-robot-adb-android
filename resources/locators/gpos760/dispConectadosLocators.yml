@@ -1,0 +1,156 @@
+# Locators para Dispositivos Conectados - Dispositivo GPOS760/GPOS780
+# Extraído automaticamente via ADB em 23/10/2025
+
+dispositivos_conectados:
+  # Título da tela de Dispositivos Conectados
+  titulo_tela:
+    text: "Dispositivos conectados"
+    class: "android.widget.TextView"
+    bounds: "[144,77][585,131]"
+    
+  # Botão voltar
+  botao_voltar:
+    content_desc: "Navegar para cima"
+    class: "android.widget.ImageButton"
+    bounds: "[0,48][112,160]"
+    clickable: true
+
+# Opções principais da tela
+parear_dispositivo:
+  titulo:
+    text: "Parear novo dispositivo"
+    resource_id: "android:id/title"
+    class: "android.widget.TextView"
+    bounds: "[144,192][478,235]"
+    
+  icone:
+    resource_id: "android:id/icon"
+    class: "android.widget.ImageView"
+    bounds: "[32,189][80,237]"
+    
+  container_principal:
+    class: "android.widget.LinearLayout"
+    bounds: "[0,160][720,267]"
+    clickable: true
+
+preferencias_conexao:
+  titulo:
+    text: "Preferências de conexão"
+    resource_id: "android:id/title"
+    class: "android.widget.TextView"
+    bounds: "[144,299][497,342]"
+    
+  status_summary:
+    text: "Bluetooth"
+    resource_id: "android:id/summary"
+    class: "android.widget.TextView"
+    bounds: "[144,342][263,380]"
+    
+  container:
+    class: "android.widget.LinearLayout"
+    bounds: "[0,267][720,412]"
+    clickable: true
+
+bluetooth_visibilidade:
+  titulo:
+    text: 'Visível como "GPOS780" para outros dispositivos'
+    resource_id: "android:id/title"
+    class: "android.widget.TextView"
+    bounds: "[144,412][688,547]"
+    focusable: true
+    
+  icone:
+    resource_id: "android:id/icon"
+    class: "android.widget.ImageView"
+    bounds: "[32,444][80,492]"
+    
+  container:
+    class: "android.widget.LinearLayout"
+    bounds: "[0,412][720,556]"
+
+# Container principal de conteúdo
+conteudo_principal:
+  recycler_view:
+    resource_id: "com.android.settings:id/recycler_view"
+    class: "androidx.recyclerview.widget.RecyclerView"
+    bounds: "[0,160][720,1184]"
+    scrollable: true
+    focusable: true
+    
+  content_frame:
+    resource_id: "com.android.settings:id/content_frame"
+    class: "android.widget.FrameLayout"
+    bounds: "[0,160][720,1184]"
+    
+  main_content:
+    resource_id: "com.android.settings:id/main_content"
+    class: "android.widget.FrameLayout"
+    bounds: "[0,160][720,1184]"
+
+# Coordenadas para toques rápidos (centro dos elementos)
+coordenadas_toque:
+  parear_dispositivo: "[360,213]"      # Centro do item Parear novo dispositivo
+  preferencias_conexao: "[360,339]"   # Centro do item Preferências de conexão
+  bluetooth_visibilidade: "[360,484]" # Centro do item Bluetooth visibilidade
+  botao_voltar: "[56,104]"            # Centro do botão voltar
+
+# Informações do dispositivo detectado
+dispositivo_info:
+  modelo: "GPOS780"
+  nome_bluetooth: "GPOS780"
+  resolucao: "720x1184"
+  densidade: "mdpi"
+  android_version: "Detectado via ADB"
+  data_extracao: "2025-10-23"
+  
+# Comandos ADB utilizados para navegação
+comandos_adb:
+  abrir_configuracoes: "adb shell am start -n com.android.settings/.Settings"
+  clicar_dispositivos_conectados: "adb shell input tap 416 298"
+  clicar_parear_dispositivo: "adb shell input tap 360 213"
+  clicar_preferencias_conexao: "adb shell input tap 360 339"
+  clicar_bluetooth_visibilidade: "adb shell input tap 360 484"
+  voltar: "adb shell input keyevent KEYCODE_BACK"
+
+# Navegação para acessar a tela
+navegacao:
+  passo_1: "Abrir Configurações"
+  passo_2: "Clicar em 'Dispositivos conectados'"
+  comando_navegacao: |
+    adb shell am start -n com.android.settings/.Settings
+    sleep 2
+    adb shell input tap 416 298
+    sleep 2
+
+# Estados possíveis dos elementos
+estados:
+  bluetooth_ligado: "Bluetooth ativado"
+  bluetooth_desligado: "Bluetooth desativado"
+  dispositivos_pareados: "Dispositivos já pareados aparecem na lista"
+  sem_dispositivos: "Nenhum dispositivo pareado"
+
+# Tipos de dispositivos que podem aparecer
+tipos_dispositivos:
+  fones_bluetooth: "Fones de ouvido Bluetooth"
+  teclados: "Teclados Bluetooth"
+  mouses: "Mouses Bluetooth"
+  alto_falantes: "Alto-falantes Bluetooth"
+  smartphones: "Outros smartphones"
+  tablets: "Tablets"
+  computadores: "Computadores"
+
+# Validações importantes
+validacoes:
+  tela_carregada:
+    verificar_titulo: "Dispositivos conectados"
+    verificar_opcoes: ["Parear novo dispositivo", "Preferências de conexão"]
+  
+  bluetooth_ativo:
+    verificar_visibilidade: 'Visível como "GPOS780"'
+    verificar_preferencias: "Bluetooth"
+    
+  funcionalidades_disponiveis:
+    - "Parear novos dispositivos Bluetooth"
+    - "Gerenciar preferências de conexão"
+    - "Controlar visibilidade do dispositivo"
+    - "Visualizar dispositivos já conectados"

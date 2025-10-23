@@ -19,11 +19,19 @@ default:
       coordinates: [700, 150]
 
   menu_items:
+    network_internet:
+      text: "Rede e Internet"
+      text_en: "Network & internet"
+      text_variations: ["Rede e Internet", "Network & internet", "Conexões", "Connections"]
+      xpath: "//android.widget.TextView[@text='Rede e Internet' or @text='Network & internet' or contains(@text,'Rede') or contains(@text,'Network')]"
+      coordinates: [540, 300]
+    
     wifi:
       text: "Wi-Fi"
       text_variations: ["Wi-Fi", "WLAN", "Rede e Internet"]
       xpath: "//android.widget.TextView[@text='Wi-Fi']"
       id: "com.android.settings:id/wifi"
+      coordinates: [180, 248]
     
     bluetooth:
       text: "Bluetooth"
@@ -134,10 +142,17 @@ google:
   inherits: default
   
   menu_items:
-    wifi:
+    network_internet:
       text: "Rede e Internet"
       text_en: "Network & internet"
       xpath: "//android.widget.TextView[contains(@text,'Rede') or contains(@text,'Network')]"
+      coordinates: [540, 300]
+    
+    wifi:
+      text: "Wi-Fi"
+      text_en: "Wi-Fi"
+      xpath: "//android.widget.TextView[@text='Wi-Fi' or @text='WLAN']"
+      coordinates: [180, 248]
     
     bluetooth:
       text: "Dispositivos conectados"
