@@ -35,5 +35,4 @@ Cenário 04: Acessar Sugestão de Melhoria
     Sleep    3s
     Capturar Screenshot De Teste    19    wifi_desligado
 
-Cenário 05: 
    

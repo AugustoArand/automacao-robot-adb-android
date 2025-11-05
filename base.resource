@@ -17,10 +17,12 @@ Library          ScreenCapLibrary
 # === IMPORTS DE RESOURCES ===
 Resource         resources/yaml_locators.robot
 Resource         utils/screenshot_utils.robot
-Resource         resources/locators/gpos760/dispConectadosLocators.resource
-Resource         resources/locators/gpos760/redeEInternetLocators.resource
+Resource         resources/locators/gpos760/dispConectadosLocators.yml
+Resource         resources/locators/gpos760/redeInternetLocators.yml
+Resource         resources/locators/gpos760/appsENotificacoes.yml
 Resource         page/redeEInternet.resource
 Resource         page/dispConectados.resource
+Resource         page/appsENotificaoes.resource
 
 # === VARIÁVEIS GLOBAIS ===
 *** Variables ***

@@ -25,6 +25,9 @@ screenshots/*.jpeg
 # Manter estrutura da pasta screenshots/
 !screenshots/.gitkeep
 
+# Arquivos temporários gerados durante testes
+screenshots/FALHA_*
+
 # Arquivos temporários do Android
 ui_dump*.xml
 screenshot_*.png
@@ -47,8 +50,13 @@ dumps/tentativa*.xml
 dumps/verificacao_*.xml
 dumps/validacao_*.xml
 dumps/visibilidade_*.xml
+dumps/apps_*.xml
+dumps/busca_*.xml
+dumps/todos_*.xml
+dumps/gertec_*.xml
 # Manter estrutura da pasta dumps/
 !dumps/.gitkeep
+!dumps/README.md
 
 # Manter arquivos de configuração importantes
 !resources/
@@ -184,3 +192,8 @@ coverage.xml
 # Documentação gerada
 # ==================
 docs/_build/
+readme/
+
+# Arquivos de documentação temporários
+**/BASE_RESOURCE.md
+**/YAML_LOCATORS.md

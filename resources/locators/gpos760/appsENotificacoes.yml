@@ -1,0 +1,152 @@
+# ==============================================================================
+# LOCATORS - APPS E NOTIFICAÇÕES - GPOS760
+# ==============================================================================
+# Arquivo de locators para a tela de Apps e Notificações
+# Dispositivo: GPOS760
+# Data de criação: 2025-10-24
+# ==============================================================================
+
+apps_e_notificacoes:
+  # Navegação
+  navegacao:
+    botao_voltar:
+      tipo: "content-desc"
+      valor: "Navegar para cima"
+      descricao: "Botão de voltar na action bar"
+      
+    titulo_tela:
+      tipo: "text"
+      valor: "Apps e notificações"
+      descricao: "Título da tela Apps e notificações"
+      class: "android.widget.TextView"
+      bounds: "[144,77][499,131]"
+
+  # Seção Apps Recentes
+  apps_recentes:
+    secao_header:
+      titulo:
+        tipo: "resource-id"
+        valor: "com.android.settings:id/header_title"
+        descricao: "Título da seção 'Apps abertos recentemente'"
+        text: "Apps abertos recentemente"
+        bounds: "[186,166][534,262]"
+    
+    app_recente:
+      container:
+        tipo: "resource-id"
+        valor: "com.android.settings:id/app1_view"
+        descricao: "Container do primeiro app recente"
+        class: "android.widget.LinearLayout"
+        bounds: "[48,294][672,507]"
+      
+      icone:
+        tipo: "resource-id"
+        valor: "com.android.settings:id/app_icon"
+        descricao: "Ícone do app recente"
+        class: "android.widget.ImageView"
+        
+      nome:
+        tipo: "resource-id"
+        valor: "com.android.settings:id/app_title"
+        descricao: "Nome do app recente"
+        class: "android.widget.TextView"
+        
+      tempo:
+        tipo: "resource-id"
+        valor: "com.android.settings:id/app_summary"
+        descricao: "Tempo desde última abertura"
+        class: "android.widget.TextView"
+    
+    botao_ver_todos:
+      tipo: "resource-id"
+      valor: "com.android.settings:id/header_details"
+      descricao: "Botão 'VER TODOS OS X APPS'"
+      text: "VER TODOS OS 13 APPS"
+      class: "android.widget.Button"
+      bounds: "[181,539][538,635]"
+
+  # IDs de recursos principais
+  recursos:
+    action_bar:
+      tipo: "resource-id"
+      valor: "com.android.settings:id/action_bar"
+      descricao: "Action bar da tela"
+      
+    content_frame:
+      tipo: "resource-id"
+      valor: "com.android.settings:id/content_frame"
+      descricao: "Frame principal de conteúdo"
+      
+    main_content:
+      tipo: "resource-id"
+      valor: "com.android.settings:id/main_content"
+      descricao: "Container do conteúdo principal"
+      
+    recycler_view:
+      tipo: "resource-id"
+      valor: "com.android.settings:id/recycler_view"
+      descricao: "RecyclerView com lista de opções"
+      class: "androidx.recyclerview.widget.RecyclerView"
+      
+    app_entities_header:
+      tipo: "resource-id"
+      valor: "com.android.settings:id/app_entities_header"
+      descricao: "Header da seção de apps"
+      
+    app_views_container:
+      tipo: "resource-id"
+      valor: "com.android.settings:id/app_views_container"
+      descricao: "Container com visualizações dos apps"
+
+  # Menu de Configurações (acessado pela tela principal)
+  menu_principal:
+    opcao_apps:
+      tipo: "text"
+      valor: "Apps e notificações"
+      descricao: "Opção 'Apps e notificações' no menu principal"
+      class: "android.widget.TextView"
+      resource_id: "android:id/title"
+      bounds_menu: "[144,403][426,446]"
+      
+    resumo_apps:
+      tipo: "text"
+      valor: "Apps recentes, apps padrão"
+      descricao: "Resumo da opção Apps e notificações"
+      class: "android.widget.TextView"
+      resource_id: "android:id/summary"
+      bounds_menu: "[144,446][490,484]"
+
+# ==============================================================================
+# COORDENADAS DE TOQUE (para fallback)
+# ==============================================================================
+coordenadas:
+  apps_e_notificacoes_menu:
+    x: 360
+    y: 443
+    descricao: "Centro do item 'Apps e notificações' no menu principal"
+    
+  botao_ver_todos_apps:
+    x: 360
+    y: 587
+    descricao: "Centro do botão 'VER TODOS OS APPS'"
+    
+  botao_voltar:
+    x: 56
+    y: 104
+    descricao: "Centro do botão de voltar"
+
+# ==============================================================================
+# INFORMAÇÕES ADICIONAIS
+# ==============================================================================
+metadata:
+  resolucao_tela: "720x1184"
+  package: "com.android.settings"
+  densidade: "320dpi"
+  modelo_dispositivo: "GPOS760"
+  versao_android: "10"
+  
+notas:
+  - "A tela mostra apps recentemente abertos no topo"
+  - "O botão 'VER TODOS OS X APPS' mostra quantidade dinâmica"
+  - "Pode ser necessário scroll para ver todas as opções"
+  - "Alguns elementos podem estar fora da tela inicialmente"

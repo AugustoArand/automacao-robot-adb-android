@@ -25,6 +25,9 @@ Capturar Screenshot
     ${result}=    Run Process    adb    shell    screencap    -p    ${DEVICE_SCREENSHOT_PATH}
     Should Be Equal As Integers    ${result.rc}    0    msg=Falha ao capturar screenshot no dispositivo
     
+    # Aguardar screenshot ser salvo
+    Sleep    0.5s
+    
     # Fazer download do screenshot
     ${local_path}=    Set Variable    ${SCREENSHOT_DIR}/${nome_final}
     ${result}=    Run Process    adb    pull    ${DEVICE_SCREENSHOT_PATH}    ${local_path}
